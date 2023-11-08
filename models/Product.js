@@ -24,11 +24,26 @@ Product.init(
     // defining price column
     price: {
       type: DataTypes.INTEGER,
-      isDecimal: true     
+      validate: {
+        isDecimal: true
+      }
     },
     // defining stock column
     stock: {
-      
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 10,
+      validate: {
+        isNumeric: true
+      },
+    // defining category_id column
+    category_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'category',
+        key: 'id'
+      }
+    }
     }    
 
 
