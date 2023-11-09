@@ -12,7 +12,7 @@ Category.init(
         allowNull: false,
         primaryKey: true,
         autoIncrement: true
-      }
+      },
 
     //defining category_name column
       category_name: {
