@@ -3,16 +3,28 @@ const { Category, Product } = require('../../models');
 
 // The `/api/categories` endpoint
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
+  await Category.findAll({
+    include:
+    [{model: Product}]
+  })
+  .then(data => {
+    res.json(data);
+  })
+  .catch(err => {
+    console.log(err);
+  });
+});
   // finding all categories, including associted products
 
-  try {
-    const categoriesAll = Category.findAll({
+
+  /*try {
+    const categoriesAll = await Category.findAll({
       include: [
         {model: Product}
       ],
     });
-    res.status(200).json(categoryAll);
+    res.status(200).json(categoriesAll);
   } 
   catch (err) {
     res.status(500).json(err);
@@ -86,6 +98,6 @@ router.delete('/:id', (req, res) => {
   catch (err){
     res.status(500).json(err);
   }
- });
+ });*/
 
-module.exports = router;
+module.exports = router
