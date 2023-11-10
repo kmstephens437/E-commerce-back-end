@@ -52,7 +52,20 @@ catch (err) {
 router.put('/:id', (req, res) => {
   // update a category by its `id` value
   try {
-    const 
+    const categoryEdit = Category.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    })
+    if (categoryEdit) {
+      res.json(categoryEdit);
+    }
+    else {
+      res.status(404).json({ error: "No Category found"});
+    }
+  }
+  catch (error) {
+    res.status(503).json(error);
   }
 });
 
