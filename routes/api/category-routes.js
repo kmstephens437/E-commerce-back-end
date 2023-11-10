@@ -70,7 +70,22 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-  // delete a category by its `id` value
-});
+  // deleting category by ID
+  try {
+    const categoryDelete = Category.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (!categoryDelete) {
+      res.status(404).json({message:'No trip found'});
+      return;
+    }
+    res.status(200).json(categoryDelete);
+  }
+  catch (err){
+    res.status(500).json(err);
+  }
+ });
 
 module.exports = router;
