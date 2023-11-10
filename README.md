@@ -7,6 +7,7 @@
 This Application is the back end for an e-commerce site built by modifying an existing code database.  It configures a working Express.js API to use Sequelize to interact with a MySQL database.
 
 ## Walkthrough video 
+[demo video (ch 13).webm](https://github.com/kmstephens437/E-commerce-back-end/assets/117880816/dd7ddf1a-511f-473e-b39b-cc8309aeb85a)
 
 
 ## Installation
